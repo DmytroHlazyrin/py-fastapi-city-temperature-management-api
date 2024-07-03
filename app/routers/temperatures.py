@@ -9,7 +9,7 @@ from app.dependencies import get_db
 router = APIRouter()
 
 
-@router.post("/update")
+@router.post("/update/")
 async def update_temperatures(db: AsyncSession = Depends(get_db)) -> dict:
     await crud.update_all_temperatures(db)
     return {"message": "Temperatures updated"}
@@ -24,7 +24,7 @@ async def read_temperatures(
 
 
 @router.get(
-    "/{city_id}", response_model=list[schemas.Temperature]
+    "/{city_id}/", response_model=list[schemas.Temperature]
 )
 async def read_temperatures_for_city(
         city_id: int, db: AsyncSession = Depends(get_db)

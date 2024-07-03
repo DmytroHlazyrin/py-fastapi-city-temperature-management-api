@@ -12,4 +12,4 @@ async def fetch_temperature(city_name: str) -> float:
                 WEATHER_API_URL, params={"key": API_KEY, "q": city_name}
         ) as response:
             data = await response.json()
-            return data['current']['temp_c']
+            return data["current"]["temp_c"]
